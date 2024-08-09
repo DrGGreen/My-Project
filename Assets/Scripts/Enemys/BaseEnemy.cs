@@ -6,7 +6,7 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour
 {
     int MaxHp;
-    int CurHp;
+    [SerializeField] int CurHp;
 
     public void TakeDammage(int dammage)
     {
@@ -15,6 +15,10 @@ public class BaseEnemy : MonoBehaviour
     public void HealHp(int healing)
     {
         CurHp += Math.Abs(healing);
+        if (CurHp > MaxHp)
+        {
+            CurHp = MaxHp;
+        }
     }
 
     
