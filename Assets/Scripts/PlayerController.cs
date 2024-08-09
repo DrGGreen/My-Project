@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateHealthBar()
     {
+        //Health bar get smaller until reach health
         if((float)CurHp / 100 <= HealthBar.transform.localScale.y)
         {
             //if(CurHp > 20)
@@ -107,16 +108,13 @@ public class PlayerController : MonoBehaviour
             //else
                 //HealthBar.transform.localScale -= new Vector3(0, (float)(50 / 100), 0) * Time.deltaTime;
         }
-        /*if ((float)CurHp / 100 <= HealthBar.transform.localScale.y)
+        //Health bar get bigger until reach health
+        if ((float)CurHp / 100 >= HealthBar.transform.localScale.y)
         {
-            //if(CurHp > 20)
-            HealthBar.transform.localScale -= new Vector3(0, (float)CurHp / 100, 0) * Time.deltaTime;
-            //else
-            //HealthBar.transform.localScale -= new Vector3(0, (float)(50 / 100), 0) * Time.deltaTime;
-        }*/
-        if (HealthBar.transform.localPosition.y >= -200 + (((float)CurHp / 100) - 1) * 165 / 2)
-        {
-            HealthBar.transform.localPosition -= new Vector3(0, ((CurHp / 100)) * 165 / 2, 0) * Time.deltaTime;
+            HealthBar.transform.localScale += new Vector3(0, (float)CurHp / 100, 0) * Time.deltaTime;
         }
+
+        //set position to stay with scale
+        HealthBar.transform.localPosition = new Vector3(HealthBar.transform.localPosition.x , -165/2 * HealthBar.transform.localScale.y - 200, 0);
     }
 }
