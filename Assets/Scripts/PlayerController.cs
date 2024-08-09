@@ -107,7 +107,14 @@ public class PlayerController : MonoBehaviour
             //else
                 //HealthBar.transform.localScale -= new Vector3(0, (float)(50 / 100), 0) * Time.deltaTime;
         }
-        if(HealthBar.transform.localPosition.y >= -200 + (((float)CurHp / 100) - 1) * 165 / 2)
+        /*if ((float)CurHp / 100 <= HealthBar.transform.localScale.y)
+        {
+            //if(CurHp > 20)
+            HealthBar.transform.localScale -= new Vector3(0, (float)CurHp / 100, 0) * Time.deltaTime;
+            //else
+            //HealthBar.transform.localScale -= new Vector3(0, (float)(50 / 100), 0) * Time.deltaTime;
+        }*/
+        if (HealthBar.transform.localPosition.y >= -200 + (((float)CurHp / 100) - 1) * 165 / 2)
         {
             HealthBar.transform.localPosition -= new Vector3(0, ((CurHp / 100)) * 165 / 2, 0) * Time.deltaTime;
         }
