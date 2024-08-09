@@ -9,8 +9,9 @@ public class Rapier : MonoBehaviour
     public void Attack()
     {
         RaycastHit hitEnemy;
-        Physics.Raycast(transform.position, Vector3.forward, out hitEnemy, 5f);
+        Physics.SphereCast(transform.position,0, Vector3.forward, out hitEnemy,2f);
 
+        if(Physics.SphereCast(transform.position, 0, Vector3.forward, out hitEnemy, 2f))
             hitEnemy.transform.gameObject.GetComponent<BaseEnemy>()?.TakeDammage(10);
     }
 
