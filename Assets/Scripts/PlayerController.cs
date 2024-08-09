@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = 0;
             if (Input.GetButtonDown("Jump"))
-                playerVelocity.y += -1.5f * gravity;
+                playerVelocity.y += -0.5f * gravity;
             doubleJump = true;
         }
         else
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
         if(doubleJump)
         {
-            playerVelocity.y = -1.5f * gravity;
+            playerVelocity.y = -0.5f * gravity;
             doubleJump = false;
             SE_Mannager.DoubleJump();
             PE_Mannager.DoubleJump();
