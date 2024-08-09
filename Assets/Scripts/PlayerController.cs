@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 3f;
     private CharacterController controller;
     [SerializeField] Vector3 playerVelocity;
-    public Camera playerCam;
+    public Transform playerCam;
     [SerializeField] Vector3 movement;
     private bool doubleJump = true;
 
@@ -32,11 +32,13 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         UpdateHealthBar();
+        playerCam.transform.position = GameObject.Find("Camera Location").transform.position;
     }
     private void Movement()
     {
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         //Vector3 movement = Quaternion.Euler(0, playerCam.transform.eulerAngles.y, 0) * new Vector3(Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime);
+        
         
         if (Input.GetKey(KeyCode.LeftShift))
             movement = Quaternion.Euler(0, playerCam.transform.eulerAngles.y, 0) * new Vector3(Input.GetAxis("Horizontal") * 2 * movementSpeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * 2 * movementSpeed * Time.deltaTime);
@@ -105,7 +107,7 @@ public class PlayerController : MonoBehaviour
             //else
                 //HealthBar.transform.localScale -= new Vector3(0, (float)(50 / 100), 0) * Time.deltaTime;
         }
-        if(HealthBar.transform.localPosition.y >= -200 - (((float)CurHp / 100)) * 165 / 2)
+        if(HealthBar.transform.localPosition.y >= -200 + (((float)CurHp / 100) - 1) * 165 / 2)
         {
             HealthBar.transform.localPosition -= new Vector3(0, ((CurHp / 100)) * 165 / 2, 0) * Time.deltaTime;
         }
