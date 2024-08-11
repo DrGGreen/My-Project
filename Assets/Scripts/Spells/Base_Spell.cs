@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class Base_Spell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    float spellCooldown;
+    float spellCurCooldown;
+    public void UseSpell()
     {
-        
+        if (spellCurCooldown == 0)
+        {
+            CastSpell();
+            PlaySpellSound();
+            spellCurCooldown = spellCooldown;
+        }
     }
+    void CastSpell()
+    {
 
-    // Update is called once per frame
+    }
+    void PlaySpellSound()
+    {
+
+    }
     void Update()
     {
-        
+        if(spellCurCooldown > 0)
+        {
+            spellCurCooldown -= Time.deltaTime;
+        }
     }
 }
