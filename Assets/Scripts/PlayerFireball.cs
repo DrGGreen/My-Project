@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerFireball : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject prefab;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire2")){
+            Instantiate(prefab, transform.position, transform.rotation);
+        }
     }
 }
